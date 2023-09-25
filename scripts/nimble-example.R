@@ -22,14 +22,12 @@ Y <- readRDS(file.path(data_dir, data_file))
 code <- nimbleCode({
   for (n in 1:N) {
     Y[n] ~ dnegbin(p, phi)
-  }
-  p ~ dunif(0, 1)
-  phi ~ dunif(0, 100)
-
-  # replicated data
-  for (n in 1:N) {
+    # replicated data
     yrep[n] ~ dnegbin(p, phi)
   }
+  # priors
+  p ~ dunif(0, 1)
+  phi ~ dunif(0, 100)
 })
 
 init_fun <- function() {

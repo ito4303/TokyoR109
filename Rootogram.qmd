@@ -4,7 +4,6 @@ author: "伊東宏樹"
 date: 2023-10-07
 format:
   revealjs:
-    code-line-numbers: false
     theme: [default, custom.scss]
 editor: visual
 self-contained: true
@@ -13,22 +12,23 @@ self-contained: true
 ## 自己紹介
 
 -   氏名: 伊東宏樹
-
 -   専門: 森林生態学
-
--   共訳書
-
--   分担執筆
+-   共訳書: 『[BUGSで学ぶ階層モデリング入門](https://www.hanmoto.com/bd/isbn/9784320057807)』『[生態学のための階層モデリング](https://www.hanmoto.com/bd/isbn/9784320058149)』など
+-   分担執筆: 『[岩波データサイエンス Vol.1](https://www.hanmoto.com/bd/isbn/9784000298513)』『[岩波データサイエンス Vol.6](https://www.hanmoto.com/bd/isbn/9784000298568)』『[たのしいベイズモデリング2](https://www.hanmoto.com/bd/isbn/9784762830839)』など
 
 ## Rootogram
 
-離散値データのあてはまり度合いを可視化
+-   離散値データのあてはまり度合いを可視化
+
+-   論文: Kleiber, C. and Zeileis, A. (2016) Visualizing count data regressions using rootograms. The American Statistician. 70(3): 296--303. <https://arxiv.org/abs/1605.01311>.
 
 ## bayesplot::ppc_rootogram()
 
-事後予測検査 (Posterior predictive check)
+::: {style="margin-top: 1em;"}
+bayesplotパッケージに、事後予測検査 (Posterior predictive check) のひとつとしてRootogramが実装されている。
+:::
 
-使い方
+## 使い方
 
 ```{r}
 #| eval: false
@@ -40,6 +40,10 @@ ppc_rootogram(y, yrep,
                         "suspended"))
 ```
 
+-   y: 観測値
+-   yrep: 事後予測分布からの複製データ
+-   style: スタイル（このあと説明）
+
 ## style = "standing"
 
 ![](figures/standing.png)
@@ -50,4 +54,38 @@ ppc_rootogram(y, yrep,
 
 ## style = "suspended"
 
-![](figures/suspended.png){fig-alt="Figure of suspended rootogram"}
+![](figures/suspended.png)
+
+## 複製データのつくりかた
+
+Stanの場合
+
+``` stan
+model {
+  Y ~ poisson(lambda);
+}
+generated quantities {
+  array[n] int yrep;
+  for (n in 1:N)
+    yrep[n] = poisson_rng(lambda);
+}
+```
+
+------------------------------------------------------------------------
+
+BUGSの場合
+
+``` r
+for (n in 1:N) {
+  Y[n] ~ dpois(lambda)
+  yrep[n] ~ dpois(lambda)
+}
+```
+
+## まとめ
+
+Rootogramで、離散値を目的変数とするモデルがデータにうまくあてはまっているかを視覚的に評価できる。
+
+::: {style="margin-top: 1em; text-align:center; font-size: 300%;"}
+🥳
+:::
