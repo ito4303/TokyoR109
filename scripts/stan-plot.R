@@ -23,6 +23,10 @@ fig_width <- 1920
 fig_height <- fig_width / 2
 scale <- 1
 
+if (!dir.exists(fig_dir)) {
+  dir.create(fig_dir) 
+}
+
 # Data
 
 Y <- readRDS(file.path(data_dir, data_file))

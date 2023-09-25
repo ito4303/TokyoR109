@@ -6,6 +6,10 @@ set.seed(123)
 data_dir <- "data"
 data_file <- "data.rds"
 
+if (!dir.exists(data_dir)) {
+  dir.create(data_dir) 
+}
+
 # Negative binomial distribution
 
 N <- 100
