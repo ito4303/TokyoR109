@@ -1,0 +1,53 @@
+---
+title: "Rootogramでモデルのあてはまりを評価"
+author: "伊東宏樹"
+date: 2023-10-07
+format:
+  revealjs:
+    code-line-numbers: false
+    theme: [default, custom.scss]
+editor: visual
+self-contained: true
+---
+
+## 自己紹介
+
+-   氏名: 伊東宏樹
+
+-   専門: 森林生態学
+
+-   共訳書
+
+-   分担執筆
+
+## Rootogram
+
+離散値データのあてはまり度合いを可視化
+
+## bayesplot::ppc_rootogram()
+
+事後予測検査 (Posterior predictive check)
+
+使い方
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-overflow: wrap
+ppc_rootogram(y, yrep,
+              style = c("standing",
+                        "hanging",
+                        "suspended"))
+```
+
+## style = "standing"
+
+![](figures/standing.png)
+
+## style = "hanging"
+
+![](figures/hanging.png)
+
+## style = "suspended"
+
+![](figures/suspended.png){fig-alt="Figure of suspended rootogram"}
