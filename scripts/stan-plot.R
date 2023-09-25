@@ -4,7 +4,6 @@
 
 # Import packages
 library(cmdstanr)
-library(posterior)
 library(bayesplot)
 library(ggplot2)
 library(patchwork)
@@ -37,18 +36,23 @@ stan_data <- list(N = length(Y), Y = Y)
 mod_pois <- cmdstan_model(file.path(model_dir, poisson_model_file))
 fit_pois <- mod_pois$sample(data = stan_data,
                             iter_warmup = 1000, iter_sampling = 1000)
-yrep_pois <- fit_pois$draws("yrep") |>
-  as_draws_matrix()
+fit_pois$summary(variables = "lambda")
+fit_pois$draws(variables = "lambda") |>
+  mcmc_trace()
+yrep_pois <- fit_pois$draws(variables = "yrep", format = "draws_matrix")
 
 # Negative binomial distribution
 
 mod_nb <- cmdstan_model(file.path(model_dir, negbin_model_file))
 fit_nb <- mod_nb$sample(data = stan_data,
                         iter_warmup = 1000, iter_sampling = 1000)
-yrep_nb <- fit_nb$draws("yrep") |>
-  as_draws_matrix()
+fit_nb$summary(variables = c("mu", "phi"))
+fit_nb$draws(variables = c("mu", "phi")) |>
+  mcmc_trace()
+yrep_nb <- fit_nb$draws(variables = "yrep", format = "draws_matrix")
 
-# Plot
+
+## Posterior predictive check using rootogram
 
 bayesplot_theme_update(legend.position = "none")
 pois_stand <- ppc_rootogram(Y, yrep_pois, prob = 0.9,
