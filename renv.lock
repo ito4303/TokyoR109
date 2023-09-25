@@ -194,6 +194,17 @@
       ],
       "Hash": "56a08cc593fc5ddc263342209e5d1e14"
     },
+    "coda": {
+      "Package": "coda",
+      "Version": "0.19-4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "lattice"
+      ],
+      "Hash": "24b6d006b8b2343876cf230687546932"
+    },
     "colorspace": {
       "Package": "colorspace",
       "Version": "2.1-0",
@@ -207,6 +218,16 @@
         "stats"
       ],
       "Hash": "f20c47fd52fae58b4e377c37bb8c335b"
+    },
+    "cpp11": {
+      "Package": "cpp11",
+      "Version": "0.4.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "707fae4bbf73697ec8d85f9d7076c061"
     },
     "data.table": {
       "Package": "data.table",
@@ -448,6 +469,28 @@
       ],
       "Hash": "a2326a66919a3311f7fbb1e3bf568283"
     },
+    "igraph": {
+      "Package": "igraph",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Matrix",
+        "R",
+        "cli",
+        "cpp11",
+        "grDevices",
+        "graphics",
+        "lifecycle",
+        "magrittr",
+        "methods",
+        "pkgconfig",
+        "rlang",
+        "stats",
+        "utils"
+      ],
+      "Hash": "80401cb5ec513e8ddc56764d03f63669"
+    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
@@ -603,6 +646,22 @@
       ],
       "Hash": "6dfe8bf774944bd5595785e3229d8771"
     },
+    "nimble": {
+      "Package": "nimble",
+      "Version": "1.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "coda",
+        "igraph",
+        "methods",
+        "numDeriv",
+        "pracma"
+      ],
+      "Hash": "145e92ba740e0ade8c7355854400fb36"
+    },
     "nlme": {
       "Package": "nlme",
       "Version": "3.1-162",
@@ -704,6 +763,20 @@
         "vctrs"
       ],
       "Hash": "7be6f62ae6281e965f09ca8657a066b2"
+    },
+    "pracma": {
+      "Package": "pracma",
+      "Version": "2.4.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics",
+        "stats",
+        "utils"
+      ],
+      "Hash": "69f905ec128691ff7108de88fc5a4964"
     },
     "processx": {
       "Package": "processx",

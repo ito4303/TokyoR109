@@ -9,6 +9,7 @@ library(bayesplot)
 
 # Settings
 
+set.seed(123)
 data_dir <- "data"
 data_file <- "data.rds"
 
@@ -31,11 +32,16 @@ code <- nimbleCode({
   }
 })
 
+init_fun <- function() {
+  list(p = runif(1, 0, 1),
+       phi = runif(1, 0, 2),
+       yrep = rpois(length(Y), 3))
+}
+
 fit <- nimbleMCMC(code,
                   constants = list(N = length(Y)),
                   data = list(Y = Y),
-                  inits = list(p = 0.5, phi = 2,
-                               yrep = rep(1, length(Y))),
+                  inits = init_fun,
                   monitors = c("p", "phi", "yrep"),
                   nchains = 3,
                   niter = 4000, nburnin = 2000,
