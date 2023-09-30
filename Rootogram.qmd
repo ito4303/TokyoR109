@@ -25,7 +25,7 @@ self-contained: true
 ## bayesplot::ppc_rootogram()
 
 ::: {style="margin-top: 1em;"}
-bayesplotパッケージに、事後予測検査 (Posterior predictive check) のための関数ひとつとしてRootogramが実装されている。
+[b](https://mc-stan.org/users/interfaces/bayesplot)[ayesplot](http://mc-stan.org/bayesplot/)パッケージに、事後予測検査 (Posterior predictive check) のための関数ひとつとしてRootogramが実装されている。
 
 -   事後予測検査: 事後予測分布から生成させた複製データが観測値にあっているかどうかを確認して、モデルのあてはまりを評価する手法
 :::
