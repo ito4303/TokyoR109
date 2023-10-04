@@ -54,6 +54,9 @@ data/
 # Figure directory
 figures/
 
+# Documents directory
+docs/
+
 # CmdStan binary files
 models/negbin
 models/poisson

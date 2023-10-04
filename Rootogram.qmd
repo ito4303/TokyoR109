@@ -12,7 +12,7 @@ self-contained: true
 ## 自己紹介
 
 -   氏名: 伊東宏樹
--   専門: 森林生態学
+-   専門: 森林生態学（+統計モデリング）
 -   共訳書: 『[BUGSで学ぶ階層モデリング入門](https://www.hanmoto.com/bd/isbn/9784320057807)』『[生態学のための階層モデリング](https://www.hanmoto.com/bd/isbn/9784320058149)』など
 -   分担執筆: 『[岩波データサイエンス Vol.1](https://www.hanmoto.com/bd/isbn/9784000298513)』『[岩波データサイエンス Vol.6](https://www.hanmoto.com/bd/isbn/9784000298568)』『[たのしいベイズモデリング2](https://www.hanmoto.com/bd/isbn/9784762830839)』など
 
@@ -25,8 +25,14 @@ self-contained: true
 ## bayesplot::ppc_rootogram()
 
 ::: {style="margin-top: 1em;"}
-bayesplotパッケージに、事後予測検査 (Posterior predictive check) のひとつとしてRootogramが実装されている。
+[b](https://mc-stan.org/users/interfaces/bayesplot)[ayesplot](http://mc-stan.org/bayesplot/)パッケージに、事後予測検査 (Posterior predictive check) のための関数ひとつとしてRootogramが実装されている。
+
+-   事後予測検査: 事後予測分布から生成させた複製データが観測値にあっているかどうかを確認して、モデルのあてはまりを評価する手法
 :::
+
+## 例 (style = "standing")
+
+![](figures/standing.png)
 
 ## 使い方
 
@@ -42,17 +48,13 @@ ppc_rootogram(y, yrep,
 
 -   y: 観測値
 -   yrep: 事後予測分布からの複製データ
--   style: スタイル（このあと説明）
+-   style: スタイル
 
-## style = "standing"
-
-![](figures/standing.png)
-
-## style = "hanging"
+## 例 (style = "hanging")
 
 ![](figures/hanging.png)
 
-## style = "suspended"
+## 例 (style = "suspended")
 
 ![](figures/suspended.png)
 
@@ -82,9 +84,9 @@ for (n in 1:N) {
 }
 ```
 
-## まとめ
+## サンプルコード
 
-Rootogramで、離散値を目的変数とするモデルがデータにうまくあてはまっているかを視覚的に評価できる。
+GitHubにおいてあります。<https://github.com/ito4303/TokyoR109>
 
 ::: {style="margin-top: 1em; text-align:center; font-size: 300%;"}
 🥳
