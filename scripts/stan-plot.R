@@ -11,7 +11,9 @@ library(patchwork)
 # Settings
 
 data_dir <- "data"
-data_file <- "data.rds"
+script_dir <- "scripts"
+data_file <- file.path(data_dir, "data.rds")
+datagen_script <- file.path(script_dir, "datagen.R")
 model_dir <- "models"
 poisson_model_file <- "poisson.stan"
 negbin_model_file <- "negbin.stan"
@@ -23,13 +25,13 @@ fig_width <- 1920
 fig_height <- fig_width / 2
 scale <- 1
 
-if (!dir.exists(fig_dir)) {
-  dir.create(fig_dir) 
-}
-
 # Data
 
-Y <- readRDS(file.path(data_dir, data_file))
+if (file.exists(data_file)) {
+  Y <- readRDS(data_file)
+} else {
+  source(datagen_script)
+}
 
 # Stan
 

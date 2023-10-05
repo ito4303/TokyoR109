@@ -11,11 +11,17 @@ library(bayesplot)
 
 set.seed(123)
 data_dir <- "data"
-data_file <- "data.rds"
+script_dir <- "scripts"
+data_file <- file.path(data_dir, "data.rds")
+datagen_script <- file.path(script_dir, "datagen.R")
 
 # Data
 
-Y <- readRDS(file.path(data_dir, data_file))
+if (file.exists(data_file)) {
+  Y <- readRDS()
+} else {
+  source(datagen_script)
+}
 
 # NIMBLE
 
