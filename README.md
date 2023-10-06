@@ -4,7 +4,7 @@
 
 ## スライド
 
--   「Rootogramでモデルのあてはまりを評価」
+-   [「Rootogramでモデルのあてはまりを評価」](https://ito4303.github.io/Rootogram.html)
 
 ## 参考リンク
 
